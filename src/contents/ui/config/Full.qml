@@ -35,6 +35,13 @@ KCM.SimpleKCM {
             }
         }
 
+        Button {
+            text: i18n("Toggle Album cover")
+            onClicked: {
+                plasmoid.configuration.rectangleActive = !plasmoid.configuration.rectangleActive
+            }
+        }
+
         ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: albumPlaceholderDialog.value

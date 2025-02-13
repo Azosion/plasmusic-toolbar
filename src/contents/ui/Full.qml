@@ -11,11 +11,15 @@ import org.kde.plasma.private.mpris as Mpris
 Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
+    property bool rectangleActive: plasmoid.configuration.rectangleActive
 
-    Layout.preferredHeight: column.implicitHeight
-    Layout.preferredWidth: column.implicitWidth
-    Layout.minimumWidth: column.implicitWidth
-    Layout.minimumHeight: column.implicitHeight
+    Layout.preferredHeight: max(300, column.implicitHeight)
+    Layout.preferredWidth: 300
+    Layout.minimumWidth: 300
+    Layout.minimumHeight: max(300, column.implicitHeight)
+
+    
+
 
     ColumnLayout {
         id: column
@@ -24,9 +28,10 @@ Item {
         anchors.fill: parent
 
         Rectangle {
+            visible: rectangleActive
             Layout.alignment: Qt.AlignHCenter
             Layout.margins: 10
-            width: 300
+            width: 200
             height: width
 
             Image {
@@ -93,10 +98,10 @@ Item {
         }
 
         Item {
-            Layout.leftMargin: 20
+            Layout.leftMargin: 60
             Layout.rightMargin: 20
             Layout.bottomMargin: 10
-            Layout.fillWidth: true
+            Layout.fillWidth: false
             Layout.preferredHeight: row.implicitHeight
             RowLayout {
                 id: row
