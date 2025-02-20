@@ -30,6 +30,8 @@ ColumnLayout {
         scrollingEnabled: root.scrollingEnabled
         scrollResetOnPause: root.scrollingResetOnPause
         textColor: root.color
+        implicitWidth: root.maxWidth
+        implicitHeight: root.maxWidth
     }
 
     ScrollingText {
@@ -42,5 +44,7 @@ ColumnLayout {
         scrollResetOnPause: root.scrollingResetOnPause
         visible: text.length !== 0
         textColor: root.color
+        implicitWidth: root.maxWidth
+        implicitHeight: root.maxWidth
     }
 }

@@ -13,13 +13,20 @@ Item {
     property real volumeStep: plasmoid.configuration.volumeStep
     property bool rectangleActive: plasmoid.configuration.rectangleActive
 
-    Layout.preferredHeight: max(300, column.implicitHeight)
-    Layout.preferredWidth: 300
-    Layout.minimumWidth: 300
-    Layout.minimumHeight: max(300, column.implicitHeight)
+    Layout.preferredHeight: column.implicitHeight
+    Layout.preferredWidth: column.implicitWidth * 2
+    Layout.minimumWidth: column.implicitWidth * 2
+    Layout.minimumHeight: column.implicitHeight
 
-    
-
+    onRectangleActiveChanged: {
+        if (!rectangleActive) {
+            column.implicitWidth = 600
+            column.implicitHeight = 150
+        } else {
+            column.implicitWidth = column.implicitWidth
+            column.implicitHeight = column.implicitHeight
+        }
+    }
 
     ColumnLayout {
         id: column
@@ -31,8 +38,8 @@ Item {
             visible: rectangleActive
             Layout.alignment: Qt.AlignHCenter
             Layout.margins: 10
-            width: 200
-            height: width
+            width: rectangleActive ? 200 : 0
+            height: rectangleActive ? 200 : 0
 
             Image {
                 anchors.fill: parent

@@ -19,10 +19,21 @@ Item {
     property bool imageReady: imageComponent.status == Image.Ready
     property string imageColor: imageColors.dominant
     property bool fallbackToIconWhenImageNotAvailable: false
+    property bool albumCoverActive: true
     visible: type === PanelIcon.Type.Icon || imageReady || (fallbackToIconWhenImageNotAvailable && !imageReady)
 
-    implicitHeight: size
-    implicitWidth: size
+    implicitHeight: albumCoverActive ? size : Kirigami.Units.iconSizes.medium
+    implicitWidth: albumCoverActive ? size * 1.5 : Kirigami.Units.iconSizes.medium * 1.5
+
+    onAlbumCoverActiveChanged: {
+        if (!albumCoverActive) {
+            root.implicitHeight = Kirigami.Units.iconSizes.medium
+            root.implicitWidth = Kirigami.Units.iconSizes.medium * 1.5
+        } else {
+            root.implicitHeight = size
+            root.implicitWidth = size * 1.5
+        }
+    }
 
     Kirigami.Icon {
         visible: type === PanelIcon.Type.Icon || (fallbackToIconWhenImageNotAvailable && !imageReady)

@@ -45,9 +45,11 @@ KCM.SimpleKCM {
         ColumnLayout {
             anchors.horizontalCenter: parent.horizontalCenter
             visible: albumPlaceholderDialog.value
+            implicitWidth: 200
+            implicitHeight: 150
             Image {
                 Layout.preferredWidth: 200
-                Layout.preferredHeight: 200
+                Layout.preferredHeight: 150
                 Layout.alignment: Qt.AlignHCenter
                 source: albumPlaceholderDialog.value
             }
