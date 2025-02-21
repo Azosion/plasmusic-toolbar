@@ -11,15 +11,15 @@ import org.kde.plasma.private.mpris as Mpris
 Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
-    property bool albumActive: plasmoid.configuration.albumActive
+    property bool rectangleActive: plasmoid.configuration.rectangleActive
 
     Layout.preferredHeight: column.implicitHeight
     Layout.preferredWidth: 300
-    Layout.minimumWidth: 300
+    Layout.minimumWidth: 150
     Layout.minimumHeight: column.implicitHeight
 
-    onAlbumActiveChanged: {
-        if (!albumActive) {
+    onRectangleActiveChanged: {
+        if (!rectangleActive) {
             column.implicitHeight = 150
         } else {
             column.implicitHeight = column.implicitHeight
@@ -33,11 +33,11 @@ Item {
         anchors.fill: parent
 
         Rectangle {
-            visible: albumActive
+            visible: rectangleActive
             Layout.alignment: Qt.AlignHCenter
             Layout.margins: 10
-            width: albumActive ? 200 : 0
-            height: albumActive ? 200 : 0
+            width: rectangleActive ? 200 : 0
+            height: rectangleActive ? 200 : 0
 
             Image {
                 anchors.fill: parent
