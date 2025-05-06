@@ -14,6 +14,7 @@ KCM.SimpleKCM {
     property alias cfg_desktopWidgetBg: desktopWidgetBackgroundRadio.value
     property alias cfg_albumPlaceholder: albumPlaceholderDialog.value
     property alias cfg_fullViewTextScrollingSpeed: fullViewTextScrollingSpeed.value
+     
 
     Kirigami.FormLayout {
         id: form
@@ -31,6 +32,18 @@ KCM.SimpleKCM {
                 icon.name: "settings-configure"
                 onClicked: {
                     albumPlaceholderDialog.open()
+                }
+            }
+
+        }
+
+        RowLayout { 
+            Kirigami.FormData.label: i18n("Toggle album cover")
+
+            Button {
+                text: i18n("Toggle")
+                onClicked: {
+                    plasmoid.configuration.toggleAlbum = !plasmoid.configuration.toggleAlbum
                 }
             }
         }

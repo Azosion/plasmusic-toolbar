@@ -11,6 +11,7 @@ import org.kde.plasma.private.mpris as Mpris
 Item {
     property string albumPlaceholder: plasmoid.configuration.albumPlaceholder
     property real volumeStep: plasmoid.configuration.volumeStep
+    property bool togglealbum: false
 
     Layout.preferredHeight: column.implicitHeight
     Layout.preferredWidth: column.implicitWidth
@@ -18,12 +19,14 @@ Item {
     Layout.minimumHeight: column.implicitHeight
 
     ColumnLayout {
+        
         id: column
 
         spacing: 0
         anchors.fill: parent
 
         Rectangle {
+            
             Layout.alignment: Qt.AlignHCenter
             Layout.margins: 10
             width: 300
