@@ -14,7 +14,7 @@ KCM.SimpleKCM {
     property alias cfg_desktopWidgetBg: desktopWidgetBackgroundRadio.value
     property alias cfg_albumPlaceholder: albumPlaceholderDialog.value
     property alias cfg_fullViewTextScrollingSpeed: fullViewTextScrollingSpeed.value
-     
+    
 
     Kirigami.FormLayout {
         id: form
@@ -43,7 +43,7 @@ KCM.SimpleKCM {
             Button {
                 text: i18n("Toggle")
                 onClicked: {
-                    plasmoid.configuration.toggleAlbum = !plasmoid.configuration.toggleAlbum
+                    plasmoid.configuration.togglealbum = !plasmoid.configuration.togglealbum
                 }
             }
         }
