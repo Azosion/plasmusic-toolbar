@@ -18,41 +18,31 @@ Item {
     Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
 
-    Timer {
+    Timer { //This is the best solution I have found, besides hard coding all the sizes, which breaks the display of the album cover. -Azo
         id: resetTimer
+        interval: 100
         onTriggered: {
-    
-            parent.Layout.preferredHeight = undefined
+            parent.Layout.preferredHeight = undefined // Don't get why this doesn't work when I set it to 0 instead of undef. -Azo
             parent.Layout.preferredWidth = undefined
-
             column.Layout.preferredHeight = column.implicitHeight
             column.Layout.preferredWidth = column.implicitWidth
         }
     }
-
+    
     onTogglealbumChanged: {
-    
-        column.visible = false
-       
         resetTimer.start()
-    
-        Qt.callLater(() => {
-            column.visible = true
-        })
     }
 
     ColumnLayout {
-        
         id: column
-
         spacing: 0
         anchors.fill: parent
 
         Rectangle {
-            
-            id: albumRect
-            visible: togglealbum
+        //TODO: Set height of widget to half it's default height when album is turned off.
 
+            id: albumRect 
+            visible: togglealbum
             Layout.alignment: Qt.AlignHCenter
             Layout.margins: 10
             width: 300
