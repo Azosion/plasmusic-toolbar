@@ -18,6 +18,29 @@ Item {
     Layout.minimumWidth: column.implicitWidth
     Layout.minimumHeight: column.implicitHeight
 
+    Timer {
+        id: resetTimer
+        onTriggered: {
+    
+            parent.Layout.preferredHeight = undefined
+            parent.Layout.preferredWidth = undefined
+
+            column.Layout.preferredHeight = column.implicitHeight
+            column.Layout.preferredWidth = column.implicitWidth
+        }
+    }
+
+    onTogglealbumChanged: {
+    
+        column.visible = false
+       
+        resetTimer.start()
+    
+        Qt.callLater(() => {
+            column.visible = true
+        })
+    }
+
     ColumnLayout {
         
         id: column
@@ -27,6 +50,7 @@ Item {
 
         Rectangle {
             
+            id: albumRect
             visible: togglealbum
 
             Layout.alignment: Qt.AlignHCenter

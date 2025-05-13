@@ -103,7 +103,7 @@
             <default>0.75</default>
         </entry>
         <entry name="togglealbum" type="Bool">
-            <default>false</default>
+            <default>true</default>
         </entry>
     </group>
 </kcfg>
